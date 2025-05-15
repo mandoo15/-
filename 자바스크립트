@@ -1,1 +1,24 @@
+#변수
 
+*자바스크립트는 실수, 정수, 문자형 등 분류 없이 let 또는 var로 통일
+
+const - 상수 저장하는 변수로 수정 불가
+let - 변하는 값을 저장, 수정 가능 ** 블록 변수로 자신히 속한 영역에서 사용가능한 변수를 만들어 사용할 수 있다. **
+var - 변수 선언 후 선택적 초기화 가능 ** 동일한 이름의 변수라면 블록이 생성되었다고 하더라도 하나의 변수로 인식 **
+
+
+ex ) // 블록변수 - using let
+let local = 2
+  if(local) {
+    let local = '안녕하세요';
+    console.log(local) // 안녕하세요 출력
+  }
+console.log(local) // 2 출력
+
+ex ) // 하나의 변수로 인식 - using var
+var local = 2
+  if(local) {
+    var local = '안녕하세요'
+    console.log(local) // 안녕하세요
+  }
+console.log(local) // 안녕하세요
