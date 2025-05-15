@@ -1,6 +1,6 @@
 #변수
 
-*자바스크립트는 실수, 정수, 문자형 등 분류 없이 let 또는 var로 통일
+*자바스크립트는 실수, 정수, 문자형 등 분류 없이 let 또는 var로도 지정이 가능하다 ~
 
 const - 상수 저장하는 변수로 수정 불가
 let - 변하는 값을 저장, 수정 가능 ** 블록 변수로 자신히 속한 영역에서 사용가능한 변수를 만들어 사용할 수 있다. **
@@ -22,3 +22,152 @@ var local = 2
     console.log(local) // 안녕하세요
   }
 console.log(local) // 안녕하세요
+
+
+#데이터형
+
+number - 숫자형 / 사칙연산 가능
+string - 문자형 / 따옴표로 묶어서 사용
+boolean - 논리형 / true, false
+undefined - 자료형을 알 수 없을 때 데이터 유형
+null - 값이 유효하지 않을 때
+Infinity - 무한 반복 데이터
+
+Q. 어떤 유형의 데이터인지 알고 싶으면? type of
+ex ) // 데이터형 알아보기 - using type of
+var num = -3.14
+var str = 'hi'
+var boolm = true
+var no = null
+var some
+console.log(typeof num) // number
+console.log(typeof str) // string
+console.log(typeof boolm) // boolean
+console.log(typeof no) // object
+console.log(typeof some) // undefined
+
+** 문자형을 숫자형으로 바꾸기 **
+Number(문자형숫자)
+parseInt(문자형숫자)
+
+** 논리형 예시 형식 **
+var bool1 = true // true
+var bool2 = false // false
+var bool3 = 20 > 10 // true
+var bool4 = Boolean(0) // false
+var bool5 = Boolean(null) // false
+var bool6 = Boolean('welcome') // true --> 데이터가 존재하면 true, 존재하지 않으면 false로 인식 ( 0, null, undefined, 빈 문자 --> false로 인식 )
+
+** null vs undefined **
+undefined - 데이터형에 속하지만 데이터형이기보단 현재 변수의 데이터 상태를 알려주는 역할
+즉, 변수 선언은 했지만 현재 가지고 있는 데이터가 없을 때의 상태를 의미 !
+null - 변수에 저장된 값이 유효하지 않은 상태를 의미.
+null값을 이용해 현재 변수가 가지고 있는 값을 비울 때도 사용이 가능하다
+
+ex ) 변수가 가지고 있는 값을 비우기 - using null
+var num;
+console.log(num) // undefined
+var some = 234
+console.log(some) // 234
+some = null
+console.log(some) // null
+
+#연산자
+의미와 규칙이 규정된 기호
+
+[ 종류 ]
+산술연산자 // +, -, *, /, %
+
+증감연산자 ( 단항연산자 ) // ++a; a++; - 선증가와 후증가, =, --a; a--; - 선감소와 후감소 --> 출력하는 시점과 증가를 하는 시점의 차이
+
+비교연산자 // >, < >=, <=, ==, !=, ===,!== --> 여기서 ===는 완전히 일치한다는 뜻으로 값 뿐만 아니라 데이터형도 동일해야 함. 
+연산자 양 옆의 두 데이터를 비교하는 연산자
+true, false로 반환됨
+
+조건연산자
+3개의 피연산자가 필요하기 때문에 삼항연산자라고도 불린다. 조건을 만들고 조건에 결괏값의 결과에 따라 실행값을 출력하도록 한다.
+
+ex )
+var i = 30
+var j = 15
+
+var c = (i < j) ? 'i가 j보다 작다' : 'i가 j보다 크다' // 30 < 15 ==> false
+
+console.log(c) // i가 j보다 크다
+
+대입연산자, 복합대입연산자
+
+결합연산자 // 서로다른 데이터를 같이 작업할 때 필요한 연산자 +
+*결합연산자 +는 복잡한 수식 안에 사용하게 되면 우선순위 문제가 발생할 가능성이 있다. 따라서 연결연산자 ,를 사용해 결합연산자 역할을 대신한다.
+var a = 5;
+var b = 6;
+console.log('1문항의 답은 ',a+b,'입니다.') // 1문항의 답은 11입니다.
+
+*백틱 사용법* !!!!!!!!
+템플릿 문자열이라는 방식이 추가됨 -> 앞의 여러 데이터형을 결합이나 연결연산자로 이용하는 대신 문자열에 수식을 끼어 사용하는 방법.
+결괏값은 모두 문자형으로 출력되며 이전의 숫자형이나 다른 데이터형이라도 문자형으로 출력하게 되는 점을 조심해야 한다.
+ex ) '문자형 ${수식} 문자형'
+var num1 = 5;
+var num2 = 6;
+var d = '1문항의 답은 ${num1+num2} 입니다'
+console.log(d) // 1문항의 답은 11 입니다
+
+논리연산자 // &&, ||, !
+피연산자 결괏값이 true 아니면 false이며 논리적으로 따지는 연산자
+
+!!! && 연산자 !!!
+ex ) 로그인이라는 시스템을 만들고자 한다면 로그인이 되는 조건을 먼저 설정해야 한다.
+로그인되는 조건은 회원 아이디 값이 일치하고 패스워드 값이 일치해야한다.
+경우의 수 :: 4가지
+
+var ID = 'minji' // 저장된 id, pw값 선언
+var PW = 'minji123'
+
+var userid = 'minji' // 사용자 id, pw값 선언
+var userpw = 'minji123'
+
+var result = (ID === userid) && (PW === userpw) // 결과를 알아보기 위한 and논리식 만들기 --> id : true && pw : true
+// 위 코드에서 사용한 ()는 연산자가 너무 복잡할 때 괄호를 이용해 묶어주는 방법
+
+console.log('로그인 결과 : ', result); // 결과 출력
+
+
+--> 위의 코드 예제를 prompt() 메소드를 이용해 사용자 값을 받아볼 수 있도록 변경
+var ID = 'minji' // 저장된 id, pw값 선언
+var PW = 'minji123'
+
+var userid = prompt('아이디를 입력하세요') // 사용자 id값 입력하기
+var userpw = prompt('패스워드를 입력하세요') // 사용자 pw값 입력하기
+
+var result = (ID === userid) && (PW === userpw) // 결과를 알아보기 위한 and논리식 만들기 --> id : true && pw : true
+
+console.log('로그인 결과는 : ', result);
+
+!!! or(||) 연산자 !!!
+연산자 양쪽 상황이 모두 false값이 아니면 true 리턴
+
+ex ) 시험 통과 프로그램 - 두 과목 시험 중 하나라도 70점 이상이면 true값 내보내기
+
+var classA = prompt('A과목의 점수를 입력하세요') // 두 과목 점수를 받아올 변수 선언 후 사용자값 받기
+var classB = prompt('B과목의 점수를 입력하세요')
+
+var result = (classA > 70) || (classB > 70) // 결과를 알아내기 위한 or 논리식
+
+console.log('로그인 결과는 : ', result)
+
+!!! not(!) 연산자 !!!
+현재 피연산자가 가지고 있는 boolom값을 반대로 변경 true값을 가지고 있다면 false로 바꾼다는 뜻
+
+var num = 3 / 2; // true
+var result = !num // false
+console.log(result)
+
+** 논리 연산자들은 왼쪽 -> 오른쪽 순으로 실행되므로 결과를 얻게 되는 순간 단축 평가 중간에 평가결과가 나오며 오른쪽까지 가지 않고 평가 결과를 반환하는 성격이 있다.
+
+ex ) 논리연산자의 단축 평가
+"apple" || "banana" // "apple"출력
+"apple" && "banana" // "banana" 출력
+false || true // true ( 오른쪽 값이 반환 )
+flase || false // false ( 오른쪽 값이 반환 )
+false && true; // false ( 오른쪽은 볼 것도 없이, false )
+false && false // false ( 오른쪽은 볼 것도 없이, false )
